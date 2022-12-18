@@ -8,3 +8,5 @@ es
 browser-test/browser-test.js
 lib/
 build/
+.vscode/
+*.tgz

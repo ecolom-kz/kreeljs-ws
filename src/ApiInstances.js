@@ -1,6 +1,6 @@
-import ChainWebSocket from "./ChainWebSocket";
-import GrapheneApi from "./GrapheneApi";
-import ChainConfig from "./ChainConfig";
+import ChainWebSocket from "./ChainWebSocket.js";
+import GrapheneApi from "./GrapheneApi.js";
+import ChainConfig from "./ChainConfig.js";
 
 var autoReconnect = false; // by default don't use reconnecting-websocket
 
@@ -17,7 +17,7 @@ export const setAutoReconnect = auto => {
 };
 
 export const reset = (
-  cs = "ws://localhost:8090",
+  cs = "ws://127.0.0.1:8980",
   connect,
   connectTimeout = 4000,
   optionalApis,
@@ -35,7 +35,7 @@ export const reset = (
 };
 
 export const instance = (
-  cs = "ws://localhost:8090",
+  cs = "ws://127.0.0.1:8980",
   connect,
   connectTimeout = 4000,
   optionalApis,
@@ -115,7 +115,7 @@ const newApis = () => ({
     Apis.init_promise = Apis.ws_rpc
       .login(rpc_user, rpc_password)
       .then(() => {
-        //console.log("Connected to API node:", cs);
+        console.log("Connected to API node:", cs);
         Apis._db = new GrapheneApi(Apis.ws_rpc, "database");
         Apis._net = new GrapheneApi(Apis.ws_rpc, "network_broadcast");
         Apis._hist = new GrapheneApi(Apis.ws_rpc, "history");

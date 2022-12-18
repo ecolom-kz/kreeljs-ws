@@ -1,27 +1,15 @@
 import assert from "assert";
 import { Manager, Apis } from "../lib";
 
-var defaultUrl = "wss://eu.nodes.bitshares.ws";
+var defaultUrl = "wss://node0.leedex.net:8980";
 
 var faultyNodeList = [
-    {url: "wss://bitsqsdqsdhares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bitazdazdshares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bitshaazdzares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bit.btzadazdsabc.org/ws", location: "Hong Kong"},
     {url: "ws://127.0.0.1:8091", location: "Hangzhou, China"},
-    {url: "wss://eu.nodes.bitshares.ws", location: "Nuremberg, Germany"},
-    {url: "wss://node.testnet.bitshares.eu", location: "Public Testnet Server (Frankfurt, Germany)"}
+    {url: "wss://node0.leedex.net:8980", location: "Nuremberg, Germany"},
 ];
 
 var noWorkingNodes = [
-    {url: "wss://bitsqsdqsdhares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bitazdazdshares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bitshaazdzares.openledger.info/ws", location: "Nuremberg, Germany"},
-    {url: "wss://bit.btzadazdsabc.org/ws", location: "Hong Kong"},
     {url: "ws://127.23230.0.1:8091", location: "Hangzhou, China"},
-    {url: "wss://bitshasdares.dacplay.org:8089/ws", location:  "Hangzhou, China"},
-    {url: "wss://secuasdre.freedomledger.com/ws", location: "Toronto, Canada"},
-    {url: "wss://testnet.bitshares.eu/wqsdsqs", location: "Public Testnet Server (Frankfurt, Germany)"}
 ];
 
 var fullNodeList = [
@@ -29,22 +17,22 @@ var fullNodeList = [
         url: "wss://fake.automatic-selection.com",
         location: {translate: "settings.api_closest"}
     },
-    {url: "ws://127.0.0.1:8090", location: "Locally hosted"},
+    {url: "ws://127.0.0.1:8980", location: "Locally hosted"},
     {
-        url: "wss://eu.nodes.bitshares.ws",
-        location: "Central Europe - BitShares Infrastructure Program"
+        url: "wss://node0.leedex.net:8980",
+        location: "Central Europe - LEEDEX Core Infrastructure"
     },
-    // Testnet
-    {
-        url: "wss://testnet.nodes.bitshares.ws",
-        location: "TESTNET - BitShares Infrastructure Program"
-    }
+// Testnet
+    //{
+    //    url: "wss://test0.leedex.net:8980",
+    //    location: "TESTNET - LEEDEX Test Infrastructure"
+    //}
 ]
 
 
 /* This node currently throws an API error for the crypto API */
 var failedInitNodes = [
-    {url: "wss://eu.openledger.info/ws ", location: "Munich"}
+
 ];
 
 describe("Connection Manager", function() {
@@ -61,7 +49,7 @@ describe("Connection Manager", function() {
     });
 
     it("Instantiates with orders api", function() {
-        let man = new Manager({url: "wss://eu.nodes.bitshares.ws", urls: [], optionalApis: {enableOrders: true}});
+        let man = new Manager({url: "wss://node0.leedex.net:8980", urls: [], optionalApis: {enableOrders: true}});
         return new Promise( function(resolve, reject) {
             man.connect().then(() => {
                 assert(!!Apis.instance().orders_api());
@@ -84,7 +72,7 @@ describe("Connection Manager", function() {
         let man = new Manager({url: "ws://127.0.0.1:8092", urls: faultyNodeList.map(a => a.url)});
         return new Promise( function(resolve, reject) {
             man.connectWithFallback().then(function() {
-                assert.equal(man.url, "wss://eu.nodes.bitshares.ws");
+                assert.equal(man.url, "wss://node0.leedex.net:8980");
                 resolve();
             })
             .catch(reject)
@@ -120,10 +108,10 @@ describe("Connection Manager", function() {
     it("Can automatically fallback when closed", function() {
         this.timeout(20000);
         let man = new Manager({
-            url: "wss://eu.nodes.bitshares.ws",
+            url: "wss://node0.leedex.net:8980",
             urls: ([
-                "wss://eu.nodes.bitshares.ws",
-                "wss://public.xbts.io/ws"
+                "wss://node0.leedex.net:8980",
+                "wss://node1.leedex.net:8980"
             ]),
             autoFallback: true
         });
@@ -150,10 +138,10 @@ describe("Connection Manager", function() {
         return new Promise( function(resolve, reject) {
 
         let man = new Manager({
-            url: "wss://eu.nodes.bitshares.ws",
+            url: "wss://node0.leedex.net:8980",
             urls: ([
-                "wss://eu.nodes.bitshares.ws",
-                "wss://eu.openledger.info/ws"
+                "wss://node0.leedex.net:8980",
+                "wss://node1.leedex.net:8980"
             ]),
             closeCb: function() {
                 resolve();
@@ -168,7 +156,7 @@ describe("Connection Manager", function() {
 
     it("Can check connection times for all connections", function() {
         this.timeout(20000);
-        let man = new Manager({url: "ws://127.0.0.1:8090", urls: fullNodeList.map(a => a.url)});
+        let man = new Manager({url: "ws://127.0.0.1:8980", urls: fullNodeList.map(a => a.url)});
         return new Promise( function(resolve, reject) {
             man.checkConnections().then((latencies => {
                 resolve();
@@ -178,7 +166,7 @@ describe("Connection Manager", function() {
 
     it("Checks connections for url and urls", function() {
         this.timeout(20000);
-        let man = new Manager({url: "wss://eu.nodes.bitshares.ws", urls: ["wss://bts.open.icowallet.net/ws"]});
+        let man = new Manager({url: "wss://node0.leedex.net:8980", urls: ["wss://node1.leedex.net:8980"]});
         return new Promise( function(resolve, reject) {
             man.checkConnections().then((latencies => {
                 assert.equal(Object.keys(latencies).length, 2);

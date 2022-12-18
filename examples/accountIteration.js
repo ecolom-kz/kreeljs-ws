@@ -6,8 +6,7 @@
 /* running 'npm run build' is necessary before launching the examples */
 
 var {Apis} = require("../cjs")
-// let wsString = "wss://bitshares.openledger.info/ws";
-let wsStringLocal = "ws://127.0.0.1:8090";
+let wsStringLocal = "ws://127.0.0.1:8980";
 
 let holders = {};
 

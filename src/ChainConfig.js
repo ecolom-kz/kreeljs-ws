@@ -1,22 +1,22 @@
 var config = {
-  core_asset: "ABC",
-  address_prefix: "CBA",
+  core_asset: "CORE",
+  address_prefix: "LD",
   expire_in_secs: 15,
   expire_in_secs_proposal: 24 * 60 * 60,
   review_in_secs_committee: 24 * 60 * 60,
   networks: {
-    BitShares: {
-      core_asset: "BTS",
-      address_prefix: "BTS",
+    LEEDEX: {
+      core_asset: "LD",
+      address_prefix: "LD",
       chain_id:
-        "4018d7844c78f6a6c41c6a552b898022310fc5dec06da467ee7905a8dad512c8"
+        "da4a4872f96da5a9c8cf694c5b8344b5a7a3b24218ad90eba4b148897cf4ed23"
     },
-    Test: {
-      core_asset: "TEST",
-      address_prefix: "TEST",
-      chain_id:
-        "39f5e2ede1f8bc1a3a54a7914414e3779e33193f1f5693510e73cb7a87617447"
-    },
+//    Test: {
+//      core_asset: "TEST",
+//      address_prefix: "TEST",
+//      chain_id:
+//        "39f5e2ede1f8bc1a3a54a7914414e3779e33193f1f5693510e73cb7a87617447"
+//    },
   },
 
   /** Set a few properties for known chain IDs. */
@@ -39,15 +39,15 @@ var config = {
   },
 
   reset: () => {
-    config.core_asset = "ABC";
-    config.address_prefix = "CBA";
+    config.core_asset = "LD";
+    config.address_prefix = "LD";
     config.expire_in_secs = 15;
     config.expire_in_secs_proposal = 24 * 60 * 60;
 
     console.log("Chain config reset");
   },
 
-  setPrefix: (prefix = "CBA") => (config.address_prefix = prefix)
+  setPrefix: (prefix = "LD") => (config.address_prefix = prefix)
 };
 
 export default config;
