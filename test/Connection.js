@@ -17,7 +17,7 @@ describe("Connection", () => {
         return new Promise( function(resolve, reject) {
             Apis.instance(default_mainnet_api, true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
-                assert(coreAsset === "LD");
+                assert(coreAsset === "KREEL");
                 resolve();
             }).catch(reject)
         });
@@ -49,7 +49,7 @@ describe("Connection", () => {
         return new Promise( function(resolve, reject) {
             Apis.instance(default_mainnet_api, true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
-                assert(coreAsset === "LD");
+                assert(coreAsset === "KREEL");
                 Apis.instance().close().then(function() {
                     resolve();
                 }).catch(reject)
@@ -69,12 +69,12 @@ describe("Connection reset", () => {
         return new Promise( function(resolve, reject) {
             Apis.instance(default_mainnet_api, true).init_promise.then(function (result) {
                 coreAsset = result[0].network.core_asset;
-                assert(coreAsset === "LD");
+                assert(coreAsset === "KREEL");
                 Apis.reset(default_mainnet_api, true).then(instance => {
 //  reset back to main net for now   Apis.reset(default_testnet_api, true).then(instance => {
                     instance.init_promise.then(function (result) {
                         coreAsset = result[0].network.core_asset;
-                        assert(coreAsset === "LD");
+                        assert(coreAsset === "KREEL");
                         resolve();
                     }).catch(reject)
                 })

@@ -1,15 +1,15 @@
 var config = {
   core_asset: "CORE",
-  address_prefix: "LD",
+  address_prefix: "KRL",
   expire_in_secs: 15,
   expire_in_secs_proposal: 24 * 60 * 60,
   review_in_secs_committee: 24 * 60 * 60,
   networks: {
     KREEL: {
-      core_asset: "LD",
-      address_prefix: "LD",
+      core_asset: "KREEL",
+      address_prefix: "KRL",
       chain_id:
-        "da4a4872f96da5a9c8cf694c5b8344b5a7a3b24218ad90eba4b148897cf4ed23"
+        "230afd8e06cc690d78c3e37a17bf9e4b19bfd3f15aee2d14f4eb176a8146bf44"
     },
 //    Test: {
 //      core_asset: "TEST",
@@ -39,15 +39,15 @@ var config = {
   },
 
   reset: () => {
-    config.core_asset = "LD";
-    config.address_prefix = "LD";
+    config.core_asset = "KREEL";
+    config.address_prefix = "KRL";
     config.expire_in_secs = 15;
     config.expire_in_secs_proposal = 24 * 60 * 60;
 
     console.log("Chain config reset");
   },
 
-  setPrefix: (prefix = "LD") => (config.address_prefix = prefix)
+  setPrefix: (prefix = "KRL") => (config.address_prefix = prefix)
 };
 
 export default config;
