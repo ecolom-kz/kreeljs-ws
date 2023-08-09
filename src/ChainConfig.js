@@ -5,7 +5,7 @@ var config = {
   expire_in_secs_proposal: 24 * 60 * 60,
   review_in_secs_committee: 24 * 60 * 60,
   networks: {
-    LEEDEX: {
+    KREEL: {
       core_asset: "LD",
       address_prefix: "LD",
       chain_id:

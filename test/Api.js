@@ -2,7 +2,7 @@ const assert = require("assert");
 import {Apis} from "../lib";
 
 var coreAsset;
-var default_api = "wss://node0.leedex.net:8980";
+var default_api = "wss://kreel0.samsonov.net:8980";
 //var default_api = "ws://127.0.0.1:8980";
 
 describe("Api", () => {
@@ -270,7 +270,7 @@ describe("Api", () => {
 // TODO        it ("Get market data", function() {
 //            return new Promise( function(resolve, reject) {
 //                if (coreAsset !== "LD") {
-//                    reject(new Error("This test will only work when connected to a LEEDEX api"));
+//                    reject(new Error("This test will only work when connected to a KREEL api"));
 //                }
 //                Apis.instance().history_api().exec("get_fill_order_history", ["1.3.121", "1.3.0", 10])
 //                .then(function(history) {
@@ -286,7 +286,7 @@ describe("Api", () => {
 //        it ("Get market data (short)", function() {
 //            return new Promise( function(resolve, reject) {
 //                if (coreAsset !== "LD") {
-//                    reject(new Error("This test will only work when connected to a LEEDEX api"));
+//                    reject(new Error("This test will only work when connected to a KREEL api"));
 //                }
 //                Apis.history.get_fill_order_history("1.3.121", "1.3.0", 10)
 //                .then(function(history) {

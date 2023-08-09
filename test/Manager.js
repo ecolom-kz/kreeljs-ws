@@ -1,11 +1,11 @@
 import assert from "assert";
 import { Manager, Apis } from "../lib";
 
-var defaultUrl = "wss://node0.leedex.net:8980";
+var defaultUrl = "wss://kreel0.samsonov.net:8980";
 
 var faultyNodeList = [
     {url: "ws://127.0.0.1:8091", location: "Hangzhou, China"},
-    {url: "wss://node0.leedex.net:8980", location: "Nuremberg, Germany"},
+    {url: "wss://kreel0.samsonov.net:8980", location: "Nuremberg, Germany"},
 ];
 
 var noWorkingNodes = [
@@ -19,13 +19,13 @@ var fullNodeList = [
     },
     {url: "ws://127.0.0.1:8980", location: "Locally hosted"},
     {
-        url: "wss://node0.leedex.net:8980",
-        location: "Central Europe - LEEDEX Core Infrastructure"
+        url: "wss://kreel0.samsonov.net:8980",
+        location: "Central Europe - KREEL Core Infrastructure"
     },
 // Testnet
     //{
-    //    url: "wss://test0.leedex.net:8980",
-    //    location: "TESTNET - LEEDEX Test Infrastructure"
+    //    url: "wss://test0.ecolom.kz:8980",
+    //    location: "TESTNET - KREEL Test Infrastructure"
     //}
 ]
 
@@ -49,7 +49,7 @@ describe("Connection Manager", function() {
     });
 
     it("Instantiates with orders api", function() {
-        let man = new Manager({url: "wss://node0.leedex.net:8980", urls: [], optionalApis: {enableOrders: true}});
+        let man = new Manager({url: "wss://kreel0.samsonov.net:8980", urls: [], optionalApis: {enableOrders: true}});
         return new Promise( function(resolve, reject) {
             man.connect().then(() => {
                 assert(!!Apis.instance().orders_api());
@@ -72,7 +72,7 @@ describe("Connection Manager", function() {
         let man = new Manager({url: "ws://127.0.0.1:8092", urls: faultyNodeList.map(a => a.url)});
         return new Promise( function(resolve, reject) {
             man.connectWithFallback().then(function() {
-                assert.equal(man.url, "wss://node0.leedex.net:8980");
+                assert.equal(man.url, "wss://kreel0.samsonov.net:8980");
                 resolve();
             })
             .catch(reject)
@@ -108,10 +108,10 @@ describe("Connection Manager", function() {
     it("Can automatically fallback when closed", function() {
         this.timeout(20000);
         let man = new Manager({
-            url: "wss://node0.leedex.net:8980",
+            url: "wss://kreel0.samsonov.net:8980",
             urls: ([
-                "wss://node0.leedex.net:8980",
-                "wss://node1.leedex.net:8980"
+                "wss://kreel0.samsonov.net:8980",
+                "wss://kreel1.samsonov.net:8980"
             ]),
             autoFallback: true
         });
@@ -138,10 +138,10 @@ describe("Connection Manager", function() {
         return new Promise( function(resolve, reject) {
 
         let man = new Manager({
-            url: "wss://node0.leedex.net:8980",
+            url: "wss://kreel0.samsonov.net:8980",
             urls: ([
-                "wss://node0.leedex.net:8980",
-                "wss://node1.leedex.net:8980"
+                "wss://kreel0.samsonov.net:8980",
+                "wss://kreel1.samsonov.net:8980"
             ]),
             closeCb: function() {
                 resolve();
@@ -166,7 +166,7 @@ describe("Connection Manager", function() {
 
     it("Checks connections for url and urls", function() {
         this.timeout(20000);
-        let man = new Manager({url: "wss://node0.leedex.net:8980", urls: ["wss://node1.leedex.net:8980"]});
+        let man = new Manager({url: "wss://kreel0.samsonov.net:8980", urls: ["wss://kreel1.samsonov.net:8980"]});
         return new Promise( function(resolve, reject) {
             man.checkConnections().then((latencies => {
                 assert.equal(Object.keys(latencies).length, 2);

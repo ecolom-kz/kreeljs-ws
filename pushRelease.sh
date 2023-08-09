@@ -1,3 +1,3 @@
 npm login
 npm pack
-npm publish leedexjs-ws-$1.tgz
+npm publish kreeljs-ws-$1.tgz

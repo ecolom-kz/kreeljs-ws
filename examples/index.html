@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-    <div>Hello leedexjs-ws</div>
+    <div>Hello kreeljs-ws</div>
 
     <div style="padding-top: 20px" id="success"></div>
 
@@ -14,11 +14,11 @@
         </table>
     </div>
 
-    <script type="text/javascript" src="../build/leedexjs-ws.js"></script>
+    <script type="text/javascript" src="../build/kreeljs-ws.js"></script>
     <script type="text/javascript">
-        var { Apis: Api } = window.leedex_ws;
+        var { Apis: Api } = window.kreel_ws;
 
-        let server = "wss://node0.leedex.net:8980";
+        let server = "wss://kreel0.samsonov.net:8980";
 
         Api.instance(server, true).init_promise.then((res) => {
             console.log("Api ready:", res);

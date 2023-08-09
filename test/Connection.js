@@ -2,8 +2,8 @@ const assert = require("assert");
 import {Apis} from "../src";
 
 var coreAsset;
-var default_mainnet_api = "wss://node0.leedex.net:8980";
-// var default_testnet_api = "wss://test0.leedex.net:8980";
+var default_mainnet_api = "wss://kreel0.samsonov.net:8980";
+// var default_testnet_api = "wss://test0.ecolom.kz:8980";
 
 describe("Connection", () => {
 
