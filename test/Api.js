@@ -23,7 +23,7 @@ describe("Api", () => {
         });
 
         it("Set subscribe callback", function() {
-            this.timeout(10000);
+            // requires enable-subscribe-to-all = true on the server
             return new Promise( function(resolve, reject) {
                 Apis.instance().db_api().exec( "set_subscribe_callback", [ callback, true ] ).then(function(sub) {
                     if (sub === null) {
