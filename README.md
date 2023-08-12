@@ -1,18 +1,18 @@
-# LEEDEX websocket interface (leedexjs-ws)
+# KREEL websocket interface (kreeljs-ws)
 
-Pure JavaScript LEEDEX websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the LEEDEX blockchain via public apis or local nodes.
+Pure JavaScript KREEL websocket library for node.js and browsers. Can be used to easily connect to and obtain data from the KREEL blockchain via public apis or local nodes.
 
 Credit for the original implementation goes to [jcalfeee](https://github.com/jcalfee).
 
-[![npm version](https://img.shields.io/npm/v/leedexjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/leedexjs-ws)
-[![npm downloads](https://img.shields.io/npm/dm/leedexjs-ws.svg?style=flat-square)](https://www.npmjs.com/package/leedexjs-ws)
+[![npm version](https://img.shields.io/npm/v/kreeljs-ws.svg?style=flat-square)](https://www.npmjs.com/package/kreeljs-ws)
+[![npm downloads](https://img.shields.io/npm/dm/kreeljs-ws.svg?style=flat-square)](https://www.npmjs.com/package/kreeljs-ws)
 
 
 ## Setup
 
 This library can be obtained through npm:
 ```
-npm install leedexjs-ws
+npm install kreeljs-ws
 ```
 
 ## Usage
@@ -22,16 +22,16 @@ Several examples are available in the /examples folder, and the tests in /test a
 Browser bundles are provided in /build/, for testing purposes you can access this from rawgit:
 
 ```
-<script type="text/javascript" src="https://cdn.rawgit.com/leedex-chain/leedexjs-ws/build/leedexjs-ws.js" />
+<script type="text/javascript" src="https://cdn.rawgit.com/ecolom-kz/kreeljs-ws/build/kreeljs-ws.js" />
 ```
 
-A variable leedex_ws will be available in window.
+A variable kreel_ws will be available in window.
 
 For use in a webpack/browserify context, see the example below for how to open a websocket connection to the Openledger API and subscribe to any object updates:
 
 ```
-var {Apis} = require("leedexjs-ws");
-Apis.instance("wss://leedex.openledger.info/ws", true).init_promise.then((res) => {
+var {Apis} = require("kreeljs-ws");
+Apis.instance("wss://ecolom-kz.openledger.info/ws", true).init_promise.then((res) => {
     console.log("connected to:", res[0].network);
     Apis.db.set_subscribe_callback( updateListener, true )
 });
@@ -43,7 +43,7 @@ function updateListener(object) {
 The `set_subscribe_callback` callback (updateListener) will be called whenever an object on the blockchain changes or is removed. This is very powerful and can be used to listen to updates for specific accounts, assets or most anything else, as all state changes happen through object updates. Be aware though that you will receive quite a lot of data this way.
 
 # Witness node endpoints
-This is a non-exhaustive list of endpoints available from the witness_node executable, which provides the API server of LEEDEX.
+This is a non-exhaustive list of endpoints available from the witness_node executable, which provides the API server of KREEL.
 
 ## Public API
 

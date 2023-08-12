@@ -1,7 +1,7 @@
 {
-  "name": "leedexjs-ws",
-  "version": "6.2.0",
-  "description": "Pure JavaScript LEEDEX websocket interface for node.js and browsers.",
+  "name": "kreeljs-ws",
+  "version": "0.0.1",
+  "description": "Pure JavaScript KREEL websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
   },
@@ -18,12 +18,12 @@
     "build": "babel src -d lib",
     "postbuild": "yarn run browserify",
     "prepare": "yarn run build",
-    "browserify": "cross-env NODE_ENV=production browserify lib/index.js --standalone leedex_ws -o build/leedexjs-ws.js -d",
-    "postbrowserify": "cross-env NODE_ENV=production minify build/leedexjs-ws.js --mangle --outFile build/leedexjs-ws.min.js"
+    "browserify": "cross-env NODE_ENV=production browserify lib/index.js --standalone kreel_ws -o build/kreeljs-ws.js -d",
+    "postbrowserify": "cross-env NODE_ENV=production minify build/kreeljs-ws.js --mangle --outFile build/kreeljs-ws.min.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leedex-chain/leedexjs-ws.git"
+    "url": "git+https://github.com/ecolom-kz/kreeljs-ws.git"
   },
   "author": "maxirmx <maxirmx@gmail.com>",
   "contributors": [
@@ -31,7 +31,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leedex/leedexjs-ws/issues"
+    "url": "https://github.com/ecolom-kz/kreeljs-ws/issues"
   },
   "engines": {
     "node": ">=16.13.x",
