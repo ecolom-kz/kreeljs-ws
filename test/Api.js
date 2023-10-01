@@ -87,6 +87,7 @@ describe("Api", () => {
         // Connect once for all tests
         before(function() {
             return Apis.instance(cs, true).init_promise.then(function (result) {
+                console.log(result)
                 coreAsset = result[0].network.core_asset;
             });
         });

@@ -1,6 +1,6 @@
 {
   "name": "kreeljs-ws",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Pure JavaScript KREEL websocket interface for node.js and browsers.",
   "browser": {
     "ws": false
@@ -41,7 +41,8 @@
   "main": "lib/index.js",
   "dependencies": {
     "isomorphic-ws": "^4.0.1",
-    "ws": "^8.4.0"
+    "ws": "^8.4.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",

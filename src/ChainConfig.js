@@ -9,7 +9,7 @@ var config = {
       core_asset: "KREEL",
       address_prefix: "KRL",
       chain_id:
-        "230afd8e06cc690d78c3e37a17bf9e4b19bfd3f15aee2d14f4eb176a8146bf44"
+        "ac18b51afd7362084b476eb8bcefe706bccd3e71238a486013ca8352ecd0e068"
     },
 //    Test: {
 //      core_asset: "TEST",

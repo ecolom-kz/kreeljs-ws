@@ -166,7 +166,7 @@ describe("Connection Manager", function() {
 
     it("Checks connections for url and urls", function() {
         this.timeout(20000);
-        let man = new Manager({url: "wss://kreel0.samsonov.net:8980", urls: ["wss://kreel1.samsonov.net:8980"]});
+        let man = new Manager({url: "wss://kreel0.samsonov.net:8980", urls: ["wss://kreel2.samsonov.net:8980"]});
         return new Promise( function(resolve, reject) {
             man.checkConnections().then((latencies => {
                 assert.equal(Object.keys(latencies).length, 2);
